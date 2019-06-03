@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+import axios from 'axios';
 
 
 
@@ -52,12 +53,22 @@ class AddCourse extends Component{
     onSubmit(e){
         e.preventDefault();
 
-        console.log('Form Submitted:');
-        console.log('Name'+ this.state.course_name);
-        console.log('Code'+ this.state.course_code);
-        console.log('Amount'+ this.state.course_amount);
 
+        //
+        // console.log('Form Submitted:');
+        // console.log('Name'+ this.state.course_name);
+        // console.log('Code'+ this.state.course_code);
+        // console.log('Amount'+ this.state.course_amount);
 
+        const newCourse ={
+            course_name:this.state.course_name,
+            course_code:this.state.course_code,
+            course_amount:this.state.course_amount,
+            course_lic:this.state.course_lic
+        }
+
+        axios.post('http://localhost:4000/courses/add',newCourse)
+            .then(res=> console.log(res.data));
 
         this.setState({
             course_name:'',
