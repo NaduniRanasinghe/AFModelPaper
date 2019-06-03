@@ -16,6 +16,10 @@ let Course = new Schema({
     },
     course_lic:{
         type:String
+    },
+
+    subjects:{
+        type:mongoose.Schema.Types.ObjectId
     }
 });
 
