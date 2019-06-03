@@ -18,9 +18,9 @@ let Course = new Schema({
         type:String
     },
 
-    subjects:{
-        type:mongoose.Schema.Types.ObjectId
-    }
+    subjects:
+        [{type:mongoose.Schema.Types.ObjectId, ref:'Subject'}]
+
 });
 
 module.exports = mongoose.model('Course',Course);
