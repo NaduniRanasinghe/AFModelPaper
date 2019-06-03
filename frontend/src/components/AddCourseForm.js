@@ -17,7 +17,7 @@ class AddCourse extends Component{
        this.state ={
            course_name:'',
            course_code:'',
-           course_number:0.0,
+           course_passmark:0.0,
            course_lic:''
        }
     }
@@ -39,7 +39,7 @@ class AddCourse extends Component{
 
     onChangeCourseAmount(e){
         this.setState({
-            course_amount:e.target.value
+            course_passmark:e.target.value
         });
 
     }
@@ -63,7 +63,7 @@ class AddCourse extends Component{
         const newCourse ={
             course_name:this.state.course_name,
             course_code:this.state.course_code,
-            course_amount:this.state.course_amount,
+            course_passmark:this.state.course_passmark,
             course_lic:this.state.course_lic
         }
 
@@ -73,7 +73,7 @@ class AddCourse extends Component{
         this.setState({
             course_name:'',
             course_code:'',
-            course_number:0,
+            course_passmark:0,
             course_lic:''
         })
 

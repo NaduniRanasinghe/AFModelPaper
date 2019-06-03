@@ -1,19 +1,72 @@
 import React, {Component} from 'react';
+import './courses.css';
 
-class Courses extends Component{
+import axios from 'axios';
+
+
+const Course = props =>(
+    <tr>
+        <td>{props.course.course_name}</td>
+        <td>{props.course.course_code}</td>
+        <td>{props.course.course_passmark}</td>
+        <td>{props.course.course_lic}</td>
+    </tr>
+)
+
+
+
+class CoursesList extends Component{
+
+
+    //create constructor
+    constructor(props){
+     super(props);
+
+     this.state ={courses: []};
+
+ }
+
+ //request backend to list items
+ componentDidMount() {
+        axios.get('http://localhost:4000/courses')
+            .then(res =>{
+                this.setState({courses:res.data});
+            })
+            .catch(function(e){
+                console.log(e);
+            })
+ }
+
     render(){
         return(
-            <div>
-                <p> Courses at SLIIT</p>
-            </div>
+
+<center>
+            <table>
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Code</th>
+                    <th>Amount</th>
+                    <th>Lecturer</th>
+                </tr>
+                </thead>
+                <tbody>
+                {this.courseList()}
+                </tbody>
+
+            </table>
+</center>
+
 
 
         )
-
-
-    }
-
-
 }
 
-export default Courses;
+    courseList() {
+        return this.state.courses.map(function(currentCourse,i){
+            return <Course course ={currentCourse} key ={i}/>;
+        });
+    }
+}
+
+export default CoursesList;
