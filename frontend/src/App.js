@@ -1,7 +1,7 @@
 
 import React,{Component} from 'react';
 import AddCourse from "./components/AddCourseForm";
-import {BrowserRouter as Router, Route} from "react-router-dom";
+import {BrowserRouter as Router, Route,Switch,Link} from "react-router-dom";
 import CoursesList from "./components/Courses";
 
 class App extends Component {
@@ -11,6 +11,16 @@ class App extends Component {
             <div className="App">
                 <center><h3>SLIIT WEB</h3></center>
             </div>
+
+            <Switch>
+                <ul>
+                    <li>
+                        <Link to="/courses">Courses</Link></li>
+                    <li> <Link to="/create">Add Course</Link></li></ul>
+
+
+            </Switch>
+
             <Route path="/courses" exact component={CoursesList}/>
             <Route path="/create" exact component={AddCourse}/>
 
